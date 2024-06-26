@@ -1,25 +1,19 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.room.gradle.plugin)
+    alias(libs.plugins.room)
     alias(libs.plugins.compose.compiler)
     alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.ksp)
 }
 
-room {
-    schemaDirectory("$projectDir/schemas")
-}
-
 kotlin {
     androidTarget {
-        compilations.all {
-            kotlinOptions {
-                jvmTarget = "1.8"
-            }
-        }
+        @OptIn(ExperimentalKotlinGradlePluginApi::class)
+        compilerOptions.jvmTarget.set(JvmTarget.JVM_1_8)
     }
     
     listOf(
@@ -43,6 +37,7 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.foundation)
             implementation(compose.materialIconsExtended)
+            implementation(libs.navigation.compose)
 
             // database
             implementation(libs.room.runtime)
@@ -82,13 +77,7 @@ android {
 }
 
 
-afterEvaluate {
-    tasks.withType().configureEach {
-        dependencies {
-            add("kspAndroid", libs.room.compiler)
-            add("kspIosSimulatorArm64", libs.room.compiler)
-            add("kspIosX64", libs.room.compiler)
-            add("kspIosArm64", libs.room.compiler)
-        }
-    }
+
+room {
+    schemaDirectory("$projectDir/schemas")
 }
