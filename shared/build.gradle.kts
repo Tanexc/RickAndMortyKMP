@@ -1,19 +1,18 @@
-import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
-    alias(libs.plugins.room)
-    alias(libs.plugins.compose.compiler)
-    alias(libs.plugins.jetbrainsCompose)
     alias(libs.plugins.ksp)
+    alias(libs.plugins.room)
+    alias(libs.plugins.jetbrainsCompose)
 }
 
 kotlin {
     androidTarget {
-        @OptIn(ExperimentalKotlinGradlePluginApi::class)
-        compilerOptions.jvmTarget.set(JvmTarget.JVM_1_8)
+        compilations.all {
+            kotlinOptions {
+                jvmTarget = "1.8"
+            }
+        }
     }
     
     listOf(
@@ -25,6 +24,10 @@ kotlin {
             baseName = "shared"
             isStatic = true
         }
+    }
+
+    sourceSets.commonMain {
+        kotlin.srcDir("build/generated/ksp/metadata")
     }
 
     sourceSets {
@@ -42,7 +45,6 @@ kotlin {
             // database
             implementation(libs.room.runtime)
             implementation(libs.sqlite.bundled)
-            implementation(libs.sqlite)
 
             //koin
             implementation(libs.koin.core)
@@ -52,6 +54,8 @@ kotlin {
 
             //coroutines
             implementation(libs.kotlinx.coroutines.core)
+
+
         }
 
         androidMain.dependencies {
@@ -76,8 +80,10 @@ android {
     }
 }
 
-
-
 room {
     schemaDirectory("$projectDir/schemas")
+}
+
+dependencies {
+    ksp(libs.room.compiler)
 }
