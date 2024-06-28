@@ -7,8 +7,9 @@ fun koinInit(declaration: KoinApplication.() -> Unit = {}) {
     startKoin {
         declaration()
         modules(
-            databaseBuilderModule,
-            databaseModule
+            databaseModule,
+            networkModule,
+            repositoryModule
         )
     }
 }

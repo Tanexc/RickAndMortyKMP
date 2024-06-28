@@ -1,9 +1,6 @@
-import org.gradle.kotlin.dsl.internal.sharedruntime.codegen.pluginEntriesFrom
-
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.jetbrainsCompose)
 }
 
 android {

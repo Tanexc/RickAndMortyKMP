@@ -14,12 +14,10 @@ fun GravityFallsApp() {
     val navController = rememberNavController()
     AppTheme {
         Scaffold(
-            bottomBar = {
-                BottomAppBar {
+            topBar = {
 
-                }
             }
-        ) {
+        ) { paddings ->
             NavHost(
                 navController,
                 startDestination = Screen.Catalog.name

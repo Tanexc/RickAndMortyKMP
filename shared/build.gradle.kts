@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
+    alias(libs.plugins.kotlinx.serialization)
     alias(libs.plugins.jetbrainsCompose)
 }
 
@@ -51,6 +52,9 @@ kotlin {
 
             //ktor
             implementation(libs.ktor.client.core)
+            implementation(libs.ktor.client.content.negotiation)
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.kotlinx.serialization.json)
 
             //coroutines
             implementation(libs.kotlinx.coroutines.core)
