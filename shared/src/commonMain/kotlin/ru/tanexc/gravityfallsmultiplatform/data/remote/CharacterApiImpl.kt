@@ -17,12 +17,10 @@ class CharacterApiImpl(
         return data.getOrNull()
     }
 
-    override suspend fun getPage(page: Int): List<CharacterDto> {
-        val take = REQUEST_PAGE_LIMIT
-        val skip = page * take
+    override suspend fun getPage(offset: Int, limit: Int): List<CharacterDto> {
 
         val data: Result<List<CharacterDto>> = runCatching {
-            httpClient.get("$BASE_URL/$CHARACTER_ENDPOINT?take=$take&skip=$skip").body<List<CharacterDto>>()
+            httpClient.get("$BASE_URL/$CHARACTER_ENDPOINT?take=$limit&skip=$offset").body<List<CharacterDto>>()
         }
         return data.getOrElse { emptyList() }
     }

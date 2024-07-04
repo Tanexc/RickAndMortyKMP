@@ -6,5 +6,5 @@ import ru.tanexc.gravityfallsmultiplatform.domain.model.Character
 interface CharacterApi {
     suspend fun getById(id: Int): CharacterDto?
 
-    suspend fun getPage(page: Int): List<CharacterDto>
+    suspend fun getPage(offset: Int, limit: Int = REQUEST_PAGE_LIMIT): List<CharacterDto>
 }

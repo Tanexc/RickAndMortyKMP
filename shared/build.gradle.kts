@@ -27,8 +27,8 @@ kotlin {
         }
     }
 
-    sourceSets.commonMain {
-        kotlin.srcDir("build/generated/ksp/metadata")
+    sourceSets.all {
+        languageSettings.optIn("kotlin.experimental.ExperimentalObjCName")
     }
 
     sourceSets {
@@ -59,6 +59,12 @@ kotlin {
             //coroutines
             implementation(libs.kotlinx.coroutines.core)
 
+            //coil
+            implementation(libs.coil)
+            implementation(libs.coil.network.ktor)
+            implementation(libs.coil.compose.core)
+            implementation(libs.coil.compose)
+
 
         }
 
@@ -75,6 +81,7 @@ kotlin {
 android {
     namespace = "ru.tanexc.gravityfallsmultiplatform"
     compileSdk = 34
+
     defaultConfig {
         minSdk = 24
     }
@@ -82,12 +89,23 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.14"
+    }
+}
+
+dependencies {
+    add("kspAndroid", libs.room.compiler)
+    add("kspIosSimulatorArm64", libs.room.compiler)
+    add("kspIosX64", libs.room.compiler)
+    add("kspIosArm64", libs.room.compiler)
 }
 
 room {
     schemaDirectory("$projectDir/schemas")
-}
-
-dependencies {
-    ksp(libs.room.compiler)
 }

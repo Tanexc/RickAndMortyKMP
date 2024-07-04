@@ -10,10 +10,10 @@ import ru.tanexc.gravityfallsmultiplatform.core.REQUEST_PAGE_LIMIT
 interface CharacterDao {
 
     @Query("select * from characterentity where id = :id")
-    suspend fun getById(id: Int): CharacterEntity
+    suspend fun getById(id: Int): CharacterEntity?
 
     @Query("select * from characterentity limit :limit offset :offset")
-    fun get(offset: Int, limit: Int = REQUEST_PAGE_LIMIT): Flow<List<CharacterEntity>>
+    suspend fun get(offset: Int, limit: Int = REQUEST_PAGE_LIMIT): List<CharacterEntity>
 
     @Insert
     suspend fun insert(data: List<CharacterEntity>)

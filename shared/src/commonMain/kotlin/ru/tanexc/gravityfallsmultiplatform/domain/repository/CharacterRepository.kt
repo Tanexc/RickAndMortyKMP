@@ -6,13 +6,13 @@ import ru.tanexc.gravityfallsmultiplatform.domain.DataState
 import ru.tanexc.gravityfallsmultiplatform.domain.model.Character
 
 interface CharacterRepository {
-    fun getCharacter(id: Long): Flow<DataState<Character>>
+    fun getCharacter(id: Int): Flow<DataState<Character>>
 
     fun getPage(page: Int): Flow<DataState<List<Character>>>
 
-    fun setCharacter(data: List<Character>)
+    suspend fun setCharacter(data: List<Character>)
 
-    fun delete()
+    suspend fun delete()
 
-    fun setFavorite(id: Long)
+    suspend fun setFavorite(id: Long)
 }
