@@ -12,13 +12,9 @@ data class CharacterEntity(
     val image: String,
     val quote: String,
     val episode: String
-): LocalData {
+) : LocalData {
     override fun asDomain(): Character = Character(
-        id,
-        name,
-        image,
-        quote,
-        episode
+        id, name, image, quote, episode
     )
 
 }

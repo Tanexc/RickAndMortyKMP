@@ -11,18 +11,6 @@ import ru.tanexc.gravityfallsmultiplatform.core.di.koinInit
 class AndroidApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        runBlocking {
-            flow {
-                emit(1)
-                delay(10)
-                emit(2)
-            }.collect { param ->
-                launch {
-                    delay(100)
-                    println("processed $param")
-                }
-            }
-        }
         koinInit {
             androidContext(this@AndroidApplication)
         }

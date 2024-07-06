@@ -1,7 +1,7 @@
-package ru.tanexc.gravityfallsmultiplatform.data.remote
+package ru.tanexc.gravityfallsmultiplatform.data.remote.api
 
 import ru.tanexc.gravityfallsmultiplatform.core.REQUEST_PAGE_LIMIT
-import ru.tanexc.gravityfallsmultiplatform.domain.model.Character
+import ru.tanexc.gravityfallsmultiplatform.data.remote.dto.CharacterDto
 
 interface CharacterApi {
     suspend fun getById(id: Int): CharacterDto?

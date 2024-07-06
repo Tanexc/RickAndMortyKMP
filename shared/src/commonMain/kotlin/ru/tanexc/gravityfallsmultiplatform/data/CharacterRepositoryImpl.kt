@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import ru.tanexc.gravityfallsmultiplatform.core.REQUEST_PAGE_LIMIT
 import ru.tanexc.gravityfallsmultiplatform.data.local.CharacterDao
-import ru.tanexc.gravityfallsmultiplatform.data.remote.CharacterApi
+import ru.tanexc.gravityfallsmultiplatform.data.remote.api.CharacterApi
 import ru.tanexc.gravityfallsmultiplatform.domain.DataState
 import ru.tanexc.gravityfallsmultiplatform.domain.model.Character
 import ru.tanexc.gravityfallsmultiplatform.domain.repository.CharacterRepository
@@ -25,7 +25,7 @@ class CharacterRepositoryImpl(
         val offset = page * REQUEST_PAGE_LIMIT
         val data = characterDao.get(offset).map { it.asDomain() }
             .ifEmpty {
-                characterApi.getPage(offset).map { it.asDomain() }
+                characterApi.getPage(offset = offset).map { it.asDomain() }
             }
         if (data.isEmpty()) {
             emit(DataState.Error)

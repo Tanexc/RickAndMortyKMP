@@ -44,7 +44,8 @@ fun CatalogScreen(modifier: Modifier) {
                 Column(Modifier
                     .align(Alignment.Center)
                     .fillMaxWidth(0.5f)
-                    .background(MaterialTheme.colorScheme.background.copy(0.3f), RoundedCornerShape(22.dp))
+                    .background(MaterialTheme.colorScheme.background.copy(0.3f), RoundedCornerShape(22.dp)),
+                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Icon(
                         imageVector = Icons.Default.ErrorOutline,

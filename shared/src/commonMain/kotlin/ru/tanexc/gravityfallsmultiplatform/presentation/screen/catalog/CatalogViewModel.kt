@@ -5,6 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.CoroutineExceptionHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.Job
@@ -27,13 +28,12 @@ class CatalogViewModel(
     private val _data: MutableState<List<Character>> = mutableStateOf(emptyList())
     val data by _data
 
-    private val page: MutableStateFlow<Int> = MutableStateFlow(-1)
+    private val page: MutableStateFlow<Int> = MutableStateFlow(0)
 
     init {
-        viewModelScope.launch(Dispatchers.IO) {
-            delay(300)
+        viewModelScope.launch(Dispatchers.IO ) {
+            delay(1000)
             collectPages()
-            nextPage()
         }
     }
 

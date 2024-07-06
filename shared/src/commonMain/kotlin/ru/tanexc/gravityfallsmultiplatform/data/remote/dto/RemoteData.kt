@@ -1,4 +1,4 @@
-package ru.tanexc.gravityfallsmultiplatform.data.remote
+package ru.tanexc.gravityfallsmultiplatform.data.remote.dto
 
 import ru.tanexc.gravityfallsmultiplatform.domain.model.Domain
 

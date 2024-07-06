@@ -6,11 +6,10 @@ import platform.Foundation.NSHomeDirectory
 import ru.tanexc.gravityfallsmultiplatform.data.local.MainDatabase
 import ru.tanexc.gravityfallsmultiplatform.data.local.instantiateImpl
 
-
 fun getDatabaseBuilder(): RoomDatabase.Builder<MainDatabase> {
-    val dbFilePath = NSHomeDirectory() + "/main_database.db"
+    val dbFilePath = NSHomeDirectory() + "/my_room.db"
     return Room.databaseBuilder<MainDatabase>(
         name = dbFilePath,
-        factory = { MainDatabase::class.instantiateImpl() }
+        factory =  { MainDatabase::class.instantiateImpl() }
     )
 }
