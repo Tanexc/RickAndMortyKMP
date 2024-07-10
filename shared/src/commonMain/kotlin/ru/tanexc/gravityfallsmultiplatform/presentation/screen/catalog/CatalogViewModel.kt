@@ -31,7 +31,7 @@ class CatalogViewModel(
     private val page: MutableStateFlow<Int> = MutableStateFlow(0)
 
     init {
-        viewModelScope.launch(Dispatchers.IO ) {
+        viewModelScope.launch(Dispatchers.IO) {
             delay(1000)
             collectPages()
         }
