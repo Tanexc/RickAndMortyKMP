@@ -60,14 +60,9 @@ kotlin {
             //coroutines
             implementation(libs.kotlinx.coroutines.core)
 
-            //coil
-            implementation(libs.coil)
-            implementation(libs.coil.network.ktor)
-            implementation(libs.coil.compose.core)
-            implementation(libs.coil.compose)
-
             implementation(libs.kotlin.reflect)
 
+            implementation(libs.imagetool)
 
         }
 

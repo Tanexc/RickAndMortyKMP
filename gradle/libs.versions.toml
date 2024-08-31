@@ -1,6 +1,8 @@
 [versions]
 agp = "8.2.2"
 coil = "3.0.0-alpha07"
+compressor = "3.0.0"
+imagetool = "0.0.1-alpha01"
 kotlin = "1.9.24"
 compose-plugin = "1.6.10"
 compose = "1.6.8"
@@ -11,6 +13,7 @@ androidx-activityCompose = "1.9.0"
 ksp-version = "1.9.24-1.0.20"
 androidx-room = "2.7.0-alpha04"
 lifecycleViewmodel = "2.8.3"
+shared = "0.0.1-alpha02"
 sqlite = "2.5.0-alpha04"
 koin = "3.6.0-wasm-alpha2"
 ktor = "2.3.12"
@@ -21,6 +24,8 @@ coroutines = "1.8.1"
 [libraries]
 
 androidx-lifecycle-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel", version.ref = "lifecycleViewmodel" }
+compressor = { module = "id.zelory:compressor", version.ref = "compressor" }
+imagetool = { module = "io.github.tanexc:imagetool", version.ref = "imagetool" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
 kotlin-reflect = { module = "org.jetbrains.kotlin:kotlin-reflect", version.ref = "kotlin" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
@@ -41,6 +46,7 @@ navigation-compose = { module = "org.jetbrains.androidx.navigation:navigation-co
 # room
 room-compiler = { module = "androidx.room:room-compiler", version.ref = "androidx-room"}
 room-runtime = { module = "androidx.room:room-runtime", version.ref = "androidx-room"}
+shared = { module = "com.tanexc:shared", version.ref = "shared" }
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 sqlite = { module = "androidx.sqlite:sqlite", version.ref = "sqlite" }
 
