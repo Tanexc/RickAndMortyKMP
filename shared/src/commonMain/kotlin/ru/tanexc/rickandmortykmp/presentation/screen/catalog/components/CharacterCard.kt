@@ -51,7 +51,7 @@ fun CharacterCard(
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.basicMarquee()
             )
-            Text(character.quote)
+            Text(character.status)
         }
     }
 }
